@@ -184,6 +184,8 @@ class Importer(filing.FilingMixin):
             print(f"Looking at a txn: {i}", file=os.sys.stderr)
             payee = i[2].decode('utf-8')
             narration = i[3].decode('utf-8')
+            if  self.skip_balances and payee == 'DIRECT DEBIT PAYMENT - THANK YOU':
+                continue
             tags = set([])
             links = data.EMPTY_SET
             meta = data.new_metadata(file.name, i)
