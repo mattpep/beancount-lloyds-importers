@@ -59,7 +59,7 @@ class Importer(filing.FilingMixin):
             date_line = self.pages[0][line_before_date+1]
             date = parse_date_liberally( date_line )
             return date
-        except IndexError:
+        except (ValueError, IndexError):
             pass
 
 
